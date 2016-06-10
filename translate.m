@@ -3,9 +3,6 @@ function translate(usernote)
 %The first step. Takes a note name assigned by the user
 %and translates it into MIDI numbers. Spits out the MIDI number.
 
-%prompt = 'Input note name: ';
-%usernote = input('Input note name: ', 's');
-%usernote = inputdlg(prompt)
 note = upper(usernote);
 
 MIDI = {'C', 0; 'C#', 1; 'DB', 1; 'D', 2; 'D#', 3; 'EB', 3;
