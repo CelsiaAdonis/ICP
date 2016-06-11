@@ -63,6 +63,8 @@ VL
 
 %step 7: Interval Cycles & Voice Leading
 %Combines semitone distance with interval cycles by multiplication.
+ICVL = IC .* VL;
+ICVL
 
 
 
