@@ -1,7 +1,7 @@
-function translate(usernote)
+function output = translate(usernote)
 
-%The first step. Takes a note name assigned by the user
-%and translates it into MIDI numbers. Spits out the MIDI number.
+%Takes a note name assigned by the user and translates it into
+%MIDI numbers. Spits out the MIDI number.
 
 note = upper(usernote);
 
@@ -46,6 +46,6 @@ i = 1;
 for letter = i:MidiRow
     stringcomp = strcmp(note,MIDI{letter,1});
     if stringcomp == 1
-        output = MIDI(letter,2)
+        output = MIDI(letter,2);
     end
 end

@@ -19,6 +19,9 @@ global gamma
 global delta
 
 %step 3: translate chords into MIDI
+% for note = chord1
+%     firstmidi = translate(chord1)
+% end
 
-
+firstmidi = translate('f')
 end
