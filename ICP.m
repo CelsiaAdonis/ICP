@@ -18,13 +18,24 @@ function attraction = ICP()
 %step 3: translate both chords into MIDI
 for note = 1:chocol1
     currentNote = chord1{note};
-    firstmidi(note) = translate(currentNote);
+    midiX(note) = translate(currentNote);
 end
 
 for note = 1:chocol2
     currentNote = chord2{note};
-    secondmidi(note) = translate(currentNote);
+    midiY(note) = translate(currentNote);
 end
-firstmidi
-secondmidi
+
+%step 4: Pitch Distance
+%This table calculates the absolute distance between MIDI designations.
+
+for noteX = 1:chocol1
+    chordX = midiX(noteX);
+    for noteY = 1:chocol2
+        chordY = midiY(noteY);
+        PD(noteX,noteY) = abs(chordX{1}-chordY{1});
+    end
+end
+
+PD
 end
