@@ -10,6 +10,11 @@ defaultans = {'99999', '4', '8', '0.1'};
 
 setdi = inputdlg(prompt, dlg_title, 1, defaultans, 'on');
 
+global alpha
+global beta
+global gamma
+global delta
+
 alpha = setdi{1};
 beta = setdi{2};
 gamma = setdi{3};
