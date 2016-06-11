@@ -1,4 +1,4 @@
-function attraction = ICP()
+%function attraction = ICP()
 
 %Calculates the attraction betwen two notes or chords
 %that are inputed by the user.
@@ -36,6 +36,14 @@ for noteX = 1:chocol1
         PD(noteX,noteY) = abs(chordX{1}-chordY{1});
     end
 end
-
 PD
+% step 5: Interval Cycles
+% This table calculates the interval cycle distance for each interval.
+for noteX = 1:chocol1
+    for noteY = 1:chocol2
+        IC(noteX, noteY) = 12/(gcd(PD(noteX,noteY),12));
+    end
 end
+IC
+
+%end
