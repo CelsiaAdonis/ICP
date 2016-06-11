@@ -1,4 +1,4 @@
-function chordin()
+function [chord1, chord2] = chordin()
 
 %User interface that asks for two chords.
 %Chords may be of any length from 1-??
@@ -6,4 +6,12 @@ function chordin()
 %Function must be able to divide and save the notes of the chords
 %individually for further processing.
 
+prompt = {'Input note/chord 1:', 'Input note/chord 2:'};
+dlg_title = 'ICP';
+defaults = {'A Cb E', 'G# B# D#'};
+
+chords = inputdlg(prompt, dlg_title, 1, defaults, 'on');
+
+chord1 = strsplit(chords{1});
+chord2 = strsplit(chords{2});
 end
