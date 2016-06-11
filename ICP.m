@@ -66,7 +66,13 @@ VL
 ICVL = IC .* VL;
 ICVL
 
+%step 8: Root Salience
+%RS1 is an array of 1's, RS2 gives weight to the roots based on beta
+%and gamma.
+RS1 = ones(chocol1, chocol2);
 
+
+RS1
 
 
 %end
