@@ -12,8 +12,10 @@
 [chorow1, chocol1] = size(chord1);
 [chorow2, chocol2] = size(chord2);
 
+
 %step 2: Grab settings
 [alpha, beta, gamma, delta] = icpsettings();
+
 
 %step 3: translate both chords into MIDI
 for note = 1:chocol1
@@ -26,6 +28,7 @@ for note = 1:chocol2
     midiY(note) = translate(currentNote);
 end
 
+
 %step 4: Pitch Distance
 %This table calculates the absolute distance between MIDI designations.
 
@@ -37,6 +40,8 @@ for noteX = 1:chocol1
     end
 end
 PD
+
+
 % step 5: Interval Cycles
 % This table calculates the interval cycle distance for each interval.
 for noteX = 1:chocol1
@@ -45,5 +50,21 @@ for noteX = 1:chocol1
     end
 end
 IC
+
+
+%step 6: Voice Leading
+%Calculates the weight of voice leading through use of alpha and PD.
+for noteX = 1:chocol1
+    for noteY = 1:chocol2
+        VL(noteX, noteY) = alpha/(PD(noteX,noteY)+alpha);
+    end
+end
+VL
+
+%step 7: Interval Cycles & Voice Leading
+%Combines semitone distance with interval cycles by multiplication.
+
+
+
 
 %end
