@@ -18,10 +18,14 @@ global beta
 global gamma
 global delta
 
-%step 3: translate chords into MIDI
-% for note = chord1
-%     firstmidi = translate(chord1)
-% end
+%step 3: get number of columns of cells
+[chorow1, chocol1] = size(chord1);
 
-firstmidi = translate('f')
+%step 4: translate chords into MIDI
+for note = 1:chocol1
+    currentNote = chord1{note};
+    firstmidi(note) = translate(currentNote);
+end
+firstmidi
+% firstmidi = translate('DB2')
 end
