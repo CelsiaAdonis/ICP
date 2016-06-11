@@ -11,10 +11,14 @@ userchords = chordin();
 global chord1
 global chord2
 
-%hi = upper(chord1)
 %step 2: Grab settings
-
+settings = icpsettings();
+global alpha
+global beta
+global gamma
+global delta
 
 %step 3: translate chords into MIDI
+
 
 end
