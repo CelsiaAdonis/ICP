@@ -8,10 +8,12 @@ function [chord1, chord2] = chordin()
 
 prompt = {'Input note/chord 1:', 'Input note/chord 2:'};
 dlg_title = 'ICP';
-defaults = {'A Cb E', 'G# B# D#'};
+defaults = {'A Cb E', 'c e g#'};
 
 chords = inputdlg(prompt, dlg_title, 1, defaults, 'on');
 
+global chord1
+global chord2
 chord1 = strsplit(chords{1});
 chord2 = strsplit(chords{2});
 end
