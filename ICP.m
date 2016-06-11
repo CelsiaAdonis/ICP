@@ -6,22 +6,25 @@ function attraction = ICP()
 %attraction value.
 
 
-%step 1: Grab chords
-userchords = chordin();
-global chord1
-global chord2
+%step 1: Grab chords & count number of columns
+[chord1, chord2] = chordin();
+
+[chorow1, chocol1] = size(chord1);
+[chorow2, chocol2] = size(chord2);
 
 %step 2: Grab settings
-settings = icpsettings();
-global alpha
-global beta
-global gamma
-global delta
+[alpha, beta, gamma, delta] = icpsettings();
 
-%step 3: translate chords into MIDI
-% for note = chord1
-%     firstmidi = translate(chord1)
-% end
+%step 3: translate both chords into MIDI
+for note = 1:chocol1
+    currentNote = chord1{note};
+    firstmidi(note) = translate(currentNote);
+end
 
-firstmidi = translate('f')
+for note = 1:chocol2
+    currentNote = chord2{note};
+    secondmidi(note) = translate(currentNote);
+end
+firstmidi
+secondmidi
 end
