@@ -10,8 +10,9 @@ defaultans = {'99999', '4', '8', '0.1'};
 
 setdi = inputdlg(prompt, dlg_title, 1, defaultans, 'on');
 
-alpha = setdi{1};
-beta = setdi{2};
-gamma = setdi{3};
-delta = setdi{4};
+
+alpha = str2num(setdi{1});
+beta = str2num(setdi{2});
+gamma = str2num(setdi{3});
+delta = str2num(setdi{4});
 end
