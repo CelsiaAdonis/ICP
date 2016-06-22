@@ -9,6 +9,9 @@ function y = diffarray(Array)
 %
 % Written by: Kyle Gauder
 
+
+% Check whether input is a cell array,
+% if yes: change to normal array.
 A = Array;
 if iscell(A) == 1
     A = cell2mat(A);
@@ -16,7 +19,7 @@ end
 [ASizeRow,ASize] = size(A);
 
 for i=1:ASize
-    if i == (ASize+1)
+    if i == (ASize)
         break;
     else
         for n=1:(ASize-1)
@@ -28,3 +31,5 @@ for i=1:ASize
 end
 y = holder;
 end
+
+%%% need to eliminate the last row
