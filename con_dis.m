@@ -8,11 +8,18 @@
 % [midiX, midiY] = ICP();
 chord1 = [57, 59, 67];
 chord2 = [57, 59, 67];
-[row1,ch1size] = size(chord1);
-[row2,ch2size] = size(chord2);
 
-arrayX = diffarray(chord1)
-arrayY = diffarray(chord2)
+
+array1 = diffarray(chord1);
+array2 = diffarray(chord2);
+
+arrayX = num2cell(array1)
+arrayY = num2cell(array2);
+
+[row1,ch1size] = size(arrayX);
+[row2,ch2size] = size(arrayY);
+lengthX = 1:ch1size;
+% lengthY = 1:ch2size;
 
 %(b) check the semitones consonance
 semi_con = {0,'Y'; 1,'N'; 2,'N'; 3,'Y'; 4,'Y'; 5,'Y'; 6,'N';...
@@ -27,13 +34,14 @@ for interval = 1:semiRow
         if con == 'N'
             chordX = 'dis'
             break
+        else
+            chordX = 'con'
         end
     end
 end
 
 
 
-% lengthX = 1:ch1size;
-% lengthY = 1:ch2size;
+
 
 %end
