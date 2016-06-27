@@ -6,25 +6,34 @@
 %the chord is dissonant or consonant.
 
 % [midiX, midiY] = ICP();
-chord1 = [60, 64, 67, 20, 89, 50];
+chord1 = [57, 59, 67];
 chord2 = [57, 59, 67];
-
-semi_con = {0,'Y'; 1,'N'; 2,'N'; 3,'Y'; 4,'Y'; 5,'Y'; 6,'N';...
-    7,'Y'; 8,'Y'; 9,'Y'; 10,'N'; 11,'N'; 12,'Y'};
-
 [row1,ch1size] = size(chord1);
 [row2,ch2size] = size(chord2);
-lengthX = 1:ch1size;
-lengthY = 1:ch2size;
-
-% for number = 1:ch1size
-%     midinote = chord1(number);
-%     inter1(ch1size, ch1size) = abs(midinote-chord1(1,1:ch1size));
-% end
-% 
-% inter1
 
 arrayX = diffarray(chord1)
 arrayY = diffarray(chord2)
+
+%(b) check the semitones consonance
+semi_con = {0,'Y'; 1,'N'; 2,'N'; 3,'Y'; 4,'Y'; 5,'Y'; 6,'N';...
+    7,'Y'; 8,'Y'; 9,'Y'; 10,'N'; 11,'N'; 12,'Y'};
+
+[semiRow, semiCol] = size(semi_con);
+
+for interval = 1:semiRow
+    stringcomp = strcmp(arrayX,semi_con{interval,1});
+    if stringcomp == 1
+        con = semi_con(interval,2);
+        if con == 'N'
+            chordX = 'dis'
+            break
+        end
+    end
+end
+
+
+
+% lengthX = 1:ch1size;
+% lengthY = 1:ch2size;
 
 %end
