@@ -31,5 +31,3 @@ for i=1:ASize
 end
 y = holder;
 end
-
-%%% need to eliminate the last row

@@ -6,15 +6,15 @@
 %the chord is dissonant or consonant.
 
 % [midiX, midiY] = ICP();
-chord1 = [57, 59, 67];
+chord1 = [60, 64, 67];
 chord2 = [57, 59, 67];
 
 
-array1 = diffarray(chord1);
-array2 = diffarray(chord2);
+arrayX = diffarray(chord1);
+arrayY = diffarray(chord2);
 
-arrayX = num2cell(array1)
-arrayY = num2cell(array2);
+% arrayX = num2cell(array1)
+% arrayY = num2cell(array2);
 
 [row1,ch1size] = size(arrayX);
 [row2,ch2size] = size(arrayY);
@@ -27,16 +27,26 @@ semi_con = {0,'Y'; 1,'N'; 2,'N'; 3,'Y'; 4,'Y'; 5,'Y'; 6,'N';...
 
 [semiRow, semiCol] = size(semi_con);
 
-for interval = 1:semiRow
-    stringcomp = strcmp(arrayX,semi_con{interval,1});
-    if stringcomp == 1
-        con = semi_con(interval,2);
-        if con == 'N'
-            chordX = 'dis'
-            break
-        else
-            chordX = 'con'
+con = 'Y';
+for number = 1:ch1size
+    for numb = 1:row1
+        for interval = 1:semiRow
+            if arrayX(numb, number) == semi_con{interval,1}
+                con = semi_con{interval,2};
+                if con == 'N'
+                    chordX = 'diss'
+                    break
+                else
+                    chordX = 'cons'
+                end
+            end
         end
+        if con == 'N'
+            break
+        end                
+    end
+    if con == 'N'
+        break
     end
 end
 

@@ -1,4 +1,4 @@
-%function attraction = ICP()
+function attraction = ICP()
 
 %Calculates the attraction betwen two notes or chords
 %that are inputed by the user.
@@ -19,6 +19,8 @@
 
 %step 3: translate both chords & roots into MIDI
 %Also locates the column/row of the respective roots.
+
+% a. translate chords
 for note = 1:chocol1
     currentNote = chord1{note};
     midiX(note) = translate(currentNote);
@@ -29,6 +31,7 @@ for note = 1:chocol2
     midiY(note) = translate(currentNote);
 end
 
+% b. translates the root
 if root1 ~= 'N'
     rootX = translate(root1);
 else
@@ -46,6 +49,7 @@ end
 % rootX
 % rootY
 
+% c. locates the root within the cell array
 for midinote = 1:chocol1
     if rootX{1} == midiX{midinote}
         placeX = midinote;
@@ -64,6 +68,7 @@ end
 
 %placeX
 %placeY
+
 
 %step 4: Pitch Distance
 %This table calculates the absolute distance between MIDI designations.
@@ -127,4 +132,4 @@ RS3
 
 
 
-%end
+end
