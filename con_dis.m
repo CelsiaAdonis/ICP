@@ -1,4 +1,4 @@
-%function con = con_dis(chord1,chord2)
+function codi = con_dis(pastchord,preschord)
 
 %If a single interval within a chord is dissonant according to the given
 %list, the entire chord is deemed dissonant.
@@ -6,16 +6,12 @@
 %the chord is dissonant or consonant.
 
 
-%(a) bring in the chords, calculate semitone distance between notes,
-%and size the resulting arrays up.
+%(a) calculate semitone distance between notes & size the resulting arrays
 
-% [midiX, midiY] = ICP();
-chord1 = [60, 64, 67];
-%chord1 = [57, 59, 67];
-chord2 = [57, 59, 67];
+%[midiX, midiY] = ICP();
 
-arrayX = diffarray(chord1);
-arrayY = diffarray(chord2);
+arrayX = diffarray(pastchord);
+arrayY = diffarray(preschord);
 
 [row1,ch1size] = size(arrayX);
 [row2,ch2size] = size(arrayY);
@@ -76,6 +72,7 @@ end
 
 %(c) label the sequence of chords as CD, DC, SM (cons to diss,
 %diss to cons, or same)
+global codi
 
 if chordX == chordY
     codi = 'SM';
@@ -87,4 +84,6 @@ else
     codi = 'error: self-destruct imminent';
 end
 
-%end
+
+
+end

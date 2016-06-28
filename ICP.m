@@ -124,12 +124,25 @@ secondsum = sum(firstsum);
 RS3(1:chocol1, 1:chocol2) = RS2(1:chocol1, 1:chocol2) .* (1/secondsum);
 
 %RS1
-RS2
-RS3
+% RS2
+% RS3
 
 %step 9: Consonance & Dissonance
+%Check whether the order is con-dis, dis-con or same
 
+global codi
+condis = con_dis(midiX, midiY);
 
+if codi == 'SM'
+    CD = RS3;
+elseif codi == 'CD'
+    CD = ((1 - gamma) .* RS3)
+elseif codi == 'DC'
+    CD = ((1 + gamma) .* RS3)
+else
+    CD = 'confiscated by the Vox Populi'
+end
+codi
 
 
 end
