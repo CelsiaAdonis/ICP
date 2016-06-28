@@ -84,6 +84,4 @@ else
     codi = 'error: self-destruct imminent';
 end
 
-
-
 end
