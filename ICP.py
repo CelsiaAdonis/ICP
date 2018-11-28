@@ -1,6 +1,32 @@
 import numpy as np
 
 
+def scaleCycle():
+    return ['C', 'C#', 'D', 'D#',
+            'E', 'F', 'F#', 'G', 'G#',
+            'A', 'A#', 'B']
+
+
+def scaleFind(tonic, type='major'):
+    """Finds and retuns list of notes in a scale
+    """
+    if type is 'major':
+        pattern = [2, 2, 1, 2, 2, 2]
+    elif type is 'minor':
+        pattern = [2, 1, 2, 2, 1, 2]
+
+    cycle = scaleCycle()
+
+    i = cycle.index(tonic.upper())
+
+    scale = [tonic]
+    for step in pattern:
+        i = i + step
+        scale.append(cycle[i % 12])
+
+    return scale
+
+
 def note2MIDI(note, MIDI=''):
     """Converts a note string into MIDI notation
     function(a) -> int
@@ -9,7 +35,7 @@ def note2MIDI(note, MIDI=''):
 
     Refers to a predefined dictionary of notes and their corresponding MIDI
     values, from C to C8.
-    If for some reason you want to refer to an altered MIDI reference table,
+    If for some reason you want to refer to an alternative MIDI reference table,
     you can do so in the declaration and override the default one.
     """
 
