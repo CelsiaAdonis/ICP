@@ -2,13 +2,16 @@ import numpy as np
 
 
 def scaleCycle():
+    """Simply returns a list of possible notes in music"""
     return ['C', 'C#', 'D', 'D#',
             'E', 'F', 'F#', 'G', 'G#',
             'A', 'A#', 'B']
 
 
 def scaleFind(tonic, type='major'):
-    """Finds and retuns list of notes in a scale
+    """Finds and returns list of notes in a scale
+
+    Follows specific patterns for major/minor/types of scales
     """
     if type is 'major':
         pattern = [2, 2, 1, 2, 2, 2]
