@@ -76,16 +76,19 @@ def findRoot(chord, root):
     and chord2midi
     """
 
-    if type(root) is str:
-        root = note2MIDI(root)
+    if root is not 'N':
+        if type(root) is str:
+            root = note2MIDI(root)
 
-    if type(chord[0]) is str:
-        chord = chord2MIDI(chord)
+        if type(chord[0]) is str:
+            chord = chord2MIDI(chord)
 
-    if root in chord:
-        return chord.index(root)
+        if root in chord:
+            return chord.index(root)
+        else:
+            return 0
     else:
-        return 1
+        return 0
 
 
 def gcd(x, y):
