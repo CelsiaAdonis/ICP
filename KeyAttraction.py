@@ -14,8 +14,15 @@ def KAmean(chord, scale, type='major'):
     return sum(ka.values())/len(ka.values())
 
 
-def progression(chords, scale, type='major'):
+def KAacrossScales(chord):
+    ls = dict()
+    for note in scaleCycle():
+        ls[note] = KAmean(chord, note)
+    return ls
+
+
+def progression(chords):
     ls = list()
     for chord in chords:
-        ls.append(KAmean(chord, scale))
+        ls.append(KAacrossScales(chord))
     return ls
