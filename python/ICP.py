@@ -58,10 +58,13 @@ def chord2MIDI(chord):
     """Convert a chord into MIDI notation.
     function(a) -> list(ints)
 
-    chord must be a list of strings. Calls note2MIDI
+    chord can either be a list of strings, or a single string
+    calls note2MIDI
     """
-
-    return list(map(note2MIDI, chord))
+    if type(chord) is list:
+        return list(map(note2MIDI, chord))
+    else:
+        return note2MIDI(chord)
 
 
 def findRoot(chord, root):
@@ -156,7 +159,7 @@ def con_dis(pastchord, preschord):
     return codi
 
 
-def ICP(chords, roots=('N', 'N'), alpha=50, beta=4, gamma=8, delta=0.1):
+def ICP(chords, roots=('N', 'N'), alpha=99999, beta=4, gamma=8, delta=0.1):
     """Calculates Tonal attractions between two chords
     ref: Woolhouse, M. (2009). Modelling Tonal Attraction Between Adjacent
     Musical Elements. Journal of New Music Research.
@@ -171,18 +174,27 @@ def ICP(chords, roots=('N', 'N'), alpha=50, beta=4, gamma=8, delta=0.1):
 
     """
 
+    size_X, size_Y = 1, 1
+
     # Translate Chords
     X = chord2MIDI(chords[0])
+    if type(X) is int:
+        X = [X]
+    size_X = len(X)
+
     Y = chord2MIDI(chords[1])
+    if type(Y) is int:
+        Y = [Y]
+    size_Y = len(Y)
 
     # Translate Roots
     placeX = findRoot(X, roots[0])
     placeY = findRoot(Y, roots[1])
 
     # Pitch Distance, IC, Voice Leading
-    PD = np.zeros(shape=(len(X), len(Y)))
-    IC = np.zeros(shape=(len(X), len(Y)))
-    VL = np.zeros(shape=(len(X), len(Y)))
+    PD = np.zeros(shape=(size_X, size_Y))
+    IC = np.zeros(shape=(size_X, size_Y))
+    VL = np.zeros(shape=(size_X, size_Y))
 
     for i, noteX in enumerate(X):
         for j, noteY in enumerate(Y):
@@ -195,10 +207,10 @@ def ICP(chords, roots=('N', 'N'), alpha=50, beta=4, gamma=8, delta=0.1):
     ICVL = IC * VL
 
     # Root Salience
-    RS2 = np.ones(shape=(len(X), len(Y)))
+    RS2 = np.ones(shape=(size_X, size_Y))
 
-    RS2[placeX, 0:len(Y)] = RS2[placeX, 0:len(Y)] * beta
-    RS2[0:len(X), placeY] = RS2[0:len(X), placeY] * gamma
+    RS2[placeX, 0:size_Y] = RS2[placeX, 0:size_Y] * beta
+    RS2[0:size_X, placeY] = RS2[0:size_X, placeY] * gamma
 
     RSsum = np.sum(RS2)
     RS3 = RS2 * 1 / RSsum
