@@ -166,12 +166,20 @@ def ICP(chords, roots=('N', 'N'), alpha=99999, beta=4, gamma=8, delta=0.1):
 
     Returns Attraction ratio and consonance/dissonance state
 
+    alpha = Voice Leading variable
+    to nullify, set to 99999
+
+    Beta & gamma = Root salience variables
+    to nullify, set to 0
+
+    delta = consonance/dissonance strength variable
+    to nullify, set to 0
+
+
     EXAMPLE:
         chords = [['B3', 'D4', 'G4'], ['c4', 'E4', 'g4']]
         roots = ['G4', 'c4']
         ICP(chords, roots)
-
-
     """
 
     size_X, size_Y = 1, 1
