@@ -1,4 +1,4 @@
-import csv
+import operator
 
 from ICP import *
 
@@ -85,3 +85,14 @@ def WildModel(chords):
             note_sum.append(s)
         c_sum[note] = note_sum
     return c_sum
+
+
+def KFA(chords):
+    M = WildModel(chords)
+    keys = list()
+    for i in range(0, len(chords)):  # For each chord in order
+        kas = dict()
+        for scale in scaleCycle():  # For each scale
+            kas[scale] = M[scale][i]
+        keys.append(max(kas.items(), key=operator.itemgetter(1))[0])
+    return keys
