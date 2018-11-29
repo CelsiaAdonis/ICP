@@ -21,3 +21,7 @@ slprj/
 
 # Session info
 octave-workspace
+
+# python
+__pycache__
+__pycache__/*
