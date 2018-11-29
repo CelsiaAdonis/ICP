@@ -79,8 +79,10 @@ def note2MIDI(note, MIDI=''):
                 'E7': 100, 'F7': 101, 'F#7': 102, 'GB7': 102, 'G7': 103,
                 'G#7': 104, 'AB7': 104, 'A7': 105, 'A#7': 106, 'BB7': 106,
                 'B7': 107, 'C8': 108}
-
-    return MIDI[note.upper()]
+    if type(note) is str:
+        return MIDI[note.upper()]
+    else:
+        return note
 
 
 def chord2MIDI(chord):
@@ -188,7 +190,7 @@ def con_dis(pastchord, preschord):
     return codi
 
 
-def ICP(chords, roots=('N', 'N'), alpha=99999, beta=4, gamma=8, delta=0.1):
+def ICP(pastchord, preschord, roots=('N', 'N'), alpha=99999, beta=4, gamma=8, delta=0.1):
     """Calculates Tonal attractions between two chords
     ref: Woolhouse, M. (2009). Modelling Tonal Attraction Between Adjacent
     Musical Elements. Journal of New Music Research.
@@ -206,20 +208,20 @@ def ICP(chords, roots=('N', 'N'), alpha=99999, beta=4, gamma=8, delta=0.1):
 
 
     EXAMPLE:
-        chords = [['B3', 'D4', 'G4'], ['c4', 'E4', 'g4']]
+        pastchord, preschord = ['B3', 'D4', 'G4'], ['c4', 'E4', 'g4']
         roots = ['G4', 'c4']
-        ICP(chords, roots)
+        ICP(chords1, chord2, roots)
     """
 
     size_X, size_Y = 1, 1
 
     # Translate Chords
-    X = chord2MIDI(chords[0])
+    X = chord2MIDI(pastchord)
     if type(X) is int:
         X = [X]
     size_X = len(X)
 
-    Y = chord2MIDI(chords[1])
+    Y = chord2MIDI(preschord)
     if type(Y) is int:
         Y = [Y]
     size_Y = len(Y)

@@ -14,7 +14,7 @@ def KA(chord, scale, root='N', type='major'):
     """
     TA = dict()
     for note in scaleFind(scale, type):
-        a, codi = ICP([chord, note])
+        a, codi = ICP(chord, note)
         TA[note] = a
     return TA
 
@@ -25,7 +25,7 @@ def KAmean(chord, scale, type='major'):
     Retuns single average value
     """
     ka = KA(chord, scale)
-    return sum(ka.values())/len(ka.values())
+    return sum(ka.values()) / len(ka.values())
 
 
 def KAacrossScales(chord):
@@ -80,8 +80,10 @@ def WildModel(chords):
         for p in prog:  # For each chord in progression
             kas.append(p[note])  # Keep track of progression of KAs
             s = 0
-            for i, ka in enumerate(list(reversed(kas))):  # For each KA in our progression
-                s = s + ka/(i+1)  # calculate cumulative sum of what's been "heard", applying our harmonic decay
+            # For each KA in our progression
+            for i, ka in enumerate(list(reversed(kas))):
+                # calculate cumulative sum of what's been "heard", applying our harmonic decay
+                s = s + ka / (i + 1)
             note_sum.append(s)
         c_sum[note] = note_sum
     return c_sum
