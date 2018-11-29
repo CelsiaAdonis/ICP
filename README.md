@@ -1,6 +1,6 @@
-Interval Cycle Proximity Model Toolbox
+# Interval Cycle Proximity Model Toolbox
 
-Ref: Woolhouse, M. (2009). Modelling tonal attraction between adjacent musical elements. Journal of New Music Research, 38(4), 357-379.
+Ref: *Woolhouse, M. (2009). Modelling tonal attraction between adjacent musical elements. Journal of New Music Research, 38(4), 357-379.*
 
 ICP is a model of tonal attraction based on musical interval cycles.
 
